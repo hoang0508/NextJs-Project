@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="106mm"
+   viewBox="0 0 210 106"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="Devnet.svg"
+   inkscape:export-filename="C:\Users\Aga\Pictures\SNY icons\Website icons\Devnet.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.33540615"
+     inkscape:cx="411.44147"
+     inkscape:cy="-59.629199"
+     inkscape:window-width="2560"
+     inkscape:window-height="1346"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g26543" />
+  <defs
+     id="defs2">
+    <rect
+       x="347.89911"
+       y="337.8367"
+       width="61.678955"
+       height="53.852619"
+       id="rect23501" />
+    <rect
+       x="198.26709"
+       y="298.89136"
+       width="316.03476"
+       height="166.21638"
+       id="rect3837" />
+  </defs>
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g26543">
+      <g
+         id="g27016"
+         transform="matrix(1,0,0,1.4877296,0.0805641,-46.328927)"
+         style="fill:#ffffff">
+        <path
+           d="m 73.442201,93.233183 v 6.377436 L 2.0400618,69.286586 V 64.034603 L 73.442201,33.773082 v 6.439956 L 9.7304705,66.598073 Z"
+           id="path26812"
+           style="font-size:40px;line-height:125%;font-family:Centaur;-inkscape-font-specification:Centaur;letter-spacing:0px;word-spacing:0px;white-space:pre;fill:#fbfbfb;stroke:#fbfbfb;stroke-width:3.20121px;stroke-opacity:1;fill-opacity:1" />
+        <path
+           d="m 136.39667,40.362172 v -6.439956 l 71.40214,30.386564 v 5.251972 l -71.40214,30.199002 v -6.377437 l 63.7117,-26.385035 z"
+           id="path26814"
+           style="font-size:40px;line-height:125%;font-family:Centaur;-inkscape-font-specification:Centaur;letter-spacing:0px;word-spacing:0px;white-space:pre;fill:#fbfbfb;stroke:#fbfbfb;stroke-width:3.20121px;stroke-opacity:1;fill-opacity:1" />
+        <text
+           xml:space="preserve"
+           transform="matrix(1.8694432,0,0,1.8062975,-565.35046,-585.7952)"
+           id="text23499"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect23501);fill:#fbfbfb;fill-opacity:1;stroke:#fbfbfb;stroke-width:3.6213;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"><tspan
+             x="347.89844"
+             y="373.22656"
+             id="tspan3413"><tspan
+               style="font-family:Centaur;-inkscape-font-specification:Centaur"
+               id="tspan3411">/</tspan></tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
