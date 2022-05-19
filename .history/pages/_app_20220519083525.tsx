@@ -19,8 +19,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Provider store={store}>
-        <Component {...pageProps} />
+        {/* <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider theme={theme}>
+          <Snackbar maxSnack={99}>
+            <></>
+            </Snackbar>
+            </ThemeProvider>
+          </PersistGate> */}
       </Provider>
+      <Component {...pageProps} />
     </>
   );
 }

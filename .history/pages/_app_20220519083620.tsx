@@ -18,9 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   // const persistor = persistStore(store);
   return (
     <>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <Component {...pageProps} />
     </>
   );
 }

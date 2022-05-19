@@ -10,21 +10,24 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import Notifier from "@containers/Notifier/Notifier";
 import GlobalLoader from "@containers/GlobalLoader/GlobalLoader";
-// import Snackbar from "@components/Snackbar/Snackbar";
-import { persistStore } from "redux-persist";
 import Snackbar from "@components/Snackbar/Snackbar";
+import { persistStore } from "redux-persist";
 
 function MyApp({ Component, pageProps }: AppProps) {
   // const persistor = persistStore(store);
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Provider store={store}>
+        {/* <Snackbar maxSnack={99}>
+          <Notifier />
+          <GlobalLoader />
+        </Snackbar> */}
         <Component {...pageProps} />
       </Provider>
-    </>
+    </ThemeProvider>
   );
 }
 
-export default MyApp;
+// export default MyApp;
 
-// export default process.env.NODE_ENV === "development" ? hot(MyApp) : MyApp;
+export default process.env.NODE_ENV === "development" ? hot(MyApp) : MyApp;

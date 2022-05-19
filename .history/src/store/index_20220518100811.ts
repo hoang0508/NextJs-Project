@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { applyMiddleware, compose, createStore, Store } from "redux";
 import { middleware, sagaMiddleware } from "./middleware";
 import combinedReducers from "./reducers";
@@ -27,6 +28,6 @@ const configureStore = (initialState = {}): AppStore => {
   return store;
 };
 
-export const store = configureStore();
+export const store = configureStore({});
 
 export const runSagas = (): unknown => sagaMiddleware.run(rootSaga);

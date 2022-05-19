@@ -15,12 +15,10 @@ import { persistStore } from "redux-persist";
 import Snackbar from "@components/Snackbar/Snackbar";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // const persistor = persistStore(store);
+  const persistor = persistStore(store);
   return (
     <>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <Component {...pageProps} />
     </>
   );
 }

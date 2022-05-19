@@ -15,12 +15,19 @@ import { persistStore } from "redux-persist";
 import Snackbar from "@components/Snackbar/Snackbar";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // const persistor = persistStore(store);
+  const persistor = persistStore(store);
   return (
     <>
       <Provider store={store}>
-        <Component {...pageProps} />
+        {/* <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider theme={theme}>
+          <Snackbar maxSnack={99}>
+            <></>
+            </Snackbar>
+            </ThemeProvider>
+          </PersistGate> */}
       </Provider>
+      <Component {...pageProps} />
     </>
   );
 }

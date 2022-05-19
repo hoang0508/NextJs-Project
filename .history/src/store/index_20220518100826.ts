@@ -27,6 +27,6 @@ const configureStore = (initialState = {}): AppStore => {
   return store;
 };
 
-export const store = configureStore();
+export const store = configureStore({});
 
 export const runSagas = (): unknown => sagaMiddleware.run(rootSaga);
