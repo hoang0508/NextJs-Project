@@ -19,16 +19,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+        {/* <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider theme={theme}>
-            {/* <Snackbar maxSnack={99}> */}
-            {/* <Notifier />
-              <GlobalLoader /> */}
-            <></>
-            <Component {...pageProps} />
-            {/* </Snackbar> */}
-          </ThemeProvider>
-        </PersistGate>
+            <Snackbar maxSnack={99}>
+              <Notifier />
+              <GlobalLoader />
+              </Snackbar>
+              </ThemeProvider>
+            </PersistGate> */}
+        <Component {...pageProps} />
       </Provider>
     </>
   );

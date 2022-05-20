@@ -1,5 +1,5 @@
-import BorrowContainer from "@containers/BorrowContainer/BorrowContainer";
-// import { BorrowContainer } from "../../src/containers/BorrowContainer/BorrowContainer";
+// import { BorrowContainer } from "@containers/BorrowContainer/BorrowContainer";
+import { BorrowContainer } from "../../src/containers/BorrowContainer/BorrowContainer";
 
 import { Grid } from "@material-ui/core";
 
@@ -21,7 +21,7 @@ const BorrowPage = () => {
   return (
     <Grid className={classes.root}>
       kkk
-      <BorrowContainer pairs={pairs} userVaults={userVaults} />
+      {/* <BorrowContainer pairs={pairs} userVaults={userVaults} /> */}
     </Grid>
   );
 };

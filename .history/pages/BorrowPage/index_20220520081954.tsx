@@ -21,7 +21,7 @@ const BorrowPage = () => {
   return (
     <Grid className={classes.root}>
       kkk
-      <BorrowContainer pairs={pairs} userVaults={userVaults} />
+      {/* <BorrowContainer pairs={pairs} userVaults={userVaults} /> */}
     </Grid>
   );
 };

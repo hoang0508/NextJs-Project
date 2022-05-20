@@ -1,5 +1,5 @@
-import BorrowContainer from "@containers/BorrowContainer/BorrowContainer";
-// import { BorrowContainer } from "../../src/containers/BorrowContainer/BorrowContainer";
+// import { BorrowContainer } from "@containers/BorrowContainer/BorrowContainer";
+import { BorrowContainer } from "../../src/containers/BorrowContainer/BorrowContainer";
 
 import { Grid } from "@material-ui/core";
 

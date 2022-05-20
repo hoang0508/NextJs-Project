@@ -21,12 +21,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider theme={theme}>
-            {/* <Snackbar maxSnack={99}> */}
-            {/* <Notifier />
-              <GlobalLoader /> */}
-            <></>
-            <Component {...pageProps} />
-            {/* </Snackbar> */}
+            <Snackbar maxSnack={99}>
+              <Notifier />
+              <GlobalLoader />
+              <Component {...pageProps} />
+            </Snackbar>
           </ThemeProvider>
         </PersistGate>
       </Provider>

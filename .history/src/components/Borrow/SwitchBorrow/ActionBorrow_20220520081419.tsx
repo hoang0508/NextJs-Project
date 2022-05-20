@@ -59,7 +59,7 @@ interface IProp {
   walletStatus: boolean;
   noWalletHandler: () => void;
 }
-export const ActionBorrow: React.FC<IProp> = ({
+const ActionBorrow: React.FC<IProp> = ({
   action,
   cRatio,
   liquidationPriceTo,
@@ -723,3 +723,5 @@ export const ActionBorrow: React.FC<IProp> = ({
     </Grid>
   );
 };
+
+export default ActionBorrow;

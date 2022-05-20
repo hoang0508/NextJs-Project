@@ -1,35 +1,28 @@
-import { DEFAULT_PUBLICKEY } from "@consts/static";
-import { printBN } from "@consts/utils";
-import { Grid } from "@material-ui/core";
-import { ActionType } from "@reducers/vault";
-import { UserVaults } from "@selectors/exchange";
-import { ExchangeSyntheticTokens } from "@selectors/solanaWallet";
-import { PublicKey } from "@solana/web3.js";
-import { Decimal, Vault } from "@synthetify/sdk/lib/exchange";
-import { BN } from "@project-serum/anchor";
-import React from "react";
-import { BorrowInfo } from "../BorrowInfo/BorrowInfo";
-import { BorrowTable } from "../BorrowTable/BorrowTable";
-import { ActionBorrow } from "../SwitchBorrow/ActionBorrow";
-import ActionMenuBorrow, {
-  IActionContents,
-} from "../SwitchBorrow/ActionMenuBorrow";
-import useStyles from "./style";
+import { DEFAULT_PUBLICKEY } from '@consts/static'
+import { printBN } from '@consts/utils'
+import { Grid } from '@material-ui/core'
+import { ActionType } from '@reducers/vault'
+import { UserVaults } from '@selectors/exchange'
+import { ExchangeSyntheticTokens } from '@selectors/solanaWallet'
+import { PublicKey } from '@solana/web3.js'
+import { Decimal, Vault } from '@synthetify/sdk/lib/exchange'
+import { BN } from '@project-serum/anchor'
+import React from 'react'
+import { BorrowInfo } from '../BorrowInfo/BorrowInfo'
+import { BorrowTable } from '../BorrowTable/BorrowTable'
+import { ActionBorrow } from '../SwitchBorrow/ActionBorrow'
+import ActionMenuBorrow, { IActionContents } from '../SwitchBorrow/ActionMenuBorrow'
+import useStyles from './style'
 export interface BorrowedPair extends Vault {
-  collateralData: {
-    reserveBalance: number;
-    symbol: string;
-    price: Decimal;
-    balance: BN;
-  };
-  syntheticData: ExchangeSyntheticTokens;
+  collateralData: { reserveBalance: number; symbol: string; price: Decimal; balance: BN }
+  syntheticData: ExchangeSyntheticTokens
 }
 
 interface IProp {
-  pairs: BorrowedPair[];
-  userVaults: UserVaults[];
-  sending: boolean;
-  hasError: boolean | undefined;
+  pairs: BorrowedPair[]
+  userVaults: UserVaults[]
+  sending: boolean
+  hasError: boolean | undefined
   onClickSubmitButton: (
     action: ActionType,
     synthetic: PublicKey,
@@ -37,24 +30,20 @@ interface IProp {
     collateralAmount: BN,
     syntheticAmount: BN,
     vaultType: number
-  ) => void;
-  setActualPair: (
-    synthetic: PublicKey,
-    collateral: PublicKey,
-    vaultType: number
-  ) => void;
-  availableCollateral: BN;
-  availableRepay: BN;
+  ) => void
+  setActualPair: (synthetic: PublicKey, collateral: PublicKey, vaultType: number) => void
+  availableCollateral: BN
+  availableRepay: BN
   actualVault: {
-    collateralAmount: Decimal;
-    borrowAmount: Decimal;
-  };
+    collateralAmount: Decimal
+    borrowAmount: Decimal
+  }
   totalGeneralAmount: {
-    totalCollateralAmount: number;
-    totalDebtAmount: number;
-  };
-  walletStatus: boolean;
-  noWalletHandler: () => void;
+    totalCollateralAmount: number
+    totalDebtAmount: number
+  }
+  walletStatus: boolean
+  noWalletHandler: () => void
 }
 export const WrappedBorrow: React.FC<IProp> = ({
   pairs,
@@ -68,59 +57,51 @@ export const WrappedBorrow: React.FC<IProp> = ({
   actualVault,
   totalGeneralAmount,
   walletStatus,
-  noWalletHandler,
+  noWalletHandler
 }) => {
-  const classes = useStyles();
-  const [cRatio, setCRatio] = React.useState("---");
-  const [liquidationPriceTo, setLiquidationPriceTo] = React.useState(0);
-  const [liquidationPriceFrom, setLiquidationPriceFrom] = React.useState(0);
-  const [availableBorrow, setAvailableBorrow] = React.useState(new BN(0));
-  const [availableWithdraw, setAvailableWithdraw] = React.useState(new BN(0));
+  const classes = useStyles()
+  const [cRatio, setCRatio] = React.useState('---')
+  const [liquidationPriceTo, setLiquidationPriceTo] = React.useState(0)
+  const [liquidationPriceFrom, setLiquidationPriceFrom] = React.useState(0)
+  const [availableBorrow, setAvailableBorrow] = React.useState(new BN(0))
+  const [availableWithdraw, setAvailableWithdraw] = React.useState(new BN(0))
   const changeCRatio = (nr: string) => {
-    setCRatio(nr);
-  };
-  const [pairIndex, setPairIndex] = React.useState<number | null>(
-    pairs.length ? 0 : null
-  );
+    setCRatio(nr)
+  }
+  const [pairIndex, setPairIndex] = React.useState<number | null>(pairs.length ? 0 : null)
 
-  const changeValueFromTable = (
-    collSymbol: string,
-    synthSymbol: string,
-    vaultType: number
-  ) => {
+  const changeValueFromTable = (collSymbol: string, synthSymbol: string, vaultType: number) => {
     const index = pairs.findIndex(
-      (element) =>
+      element =>
         element.collateralData.symbol === collSymbol &&
         element.syntheticData.symbol === synthSymbol &&
         element.vaultType === vaultType
-    );
-    setPairIndex(index);
-  };
+    )
+    setPairIndex(index)
+  }
   React.useEffect(() => {
     if (pairIndex !== null) {
       setActualPair(
         pairs[pairIndex].synthetic,
         pairs[pairIndex].collateral,
         pairs[pairIndex].vaultType
-      );
+      )
     }
-  }, [pairIndex]);
+  }, [pairIndex])
 
   React.useEffect(() => {
     if (pairs.length === 0) {
-      setPairIndex(null);
+      setPairIndex(null)
     }
-  }, [pairs]);
+  }, [pairs])
   const actionContents: IActionContents = {
     borrow: (
       <ActionBorrow
-        action={"borrow"}
+        action={'borrow'}
         cRatio={cRatio}
         changeCRatio={changeCRatio}
         liquidationPriceTo={liquidationPriceTo > 0 ? liquidationPriceTo : 0}
-        liquidationPriceFrom={
-          liquidationPriceFrom > 0 ? liquidationPriceFrom : 0
-        }
+        liquidationPriceFrom={liquidationPriceFrom > 0 ? liquidationPriceFrom : 0}
         onClickSubmitButton={onClickSubmitButton}
         pairs={pairs}
         sending={sending}
@@ -140,12 +121,10 @@ export const WrappedBorrow: React.FC<IProp> = ({
     ),
     repay: (
       <ActionBorrow
-        action={"repay"}
-        cRatio={"---"}
+        action={'repay'}
+        cRatio={'---'}
         liquidationPriceTo={liquidationPriceTo > 0 ? liquidationPriceTo : 0}
-        liquidationPriceFrom={
-          liquidationPriceFrom > 0 ? liquidationPriceFrom : 0
-        }
+        liquidationPriceFrom={liquidationPriceFrom > 0 ? liquidationPriceFrom : 0}
         onClickSubmitButton={onClickSubmitButton}
         pairs={pairs}
         changeCRatio={changeCRatio}
@@ -163,8 +142,8 @@ export const WrappedBorrow: React.FC<IProp> = ({
         walletStatus={walletStatus}
         noWalletHandler={noWalletHandler}
       />
-    ),
-  };
+    )
+  }
 
   return (
     <Grid className={classes.root}>
@@ -175,17 +154,11 @@ export const WrappedBorrow: React.FC<IProp> = ({
             userVaults={userVaults}
             setValueWithTable={changeValueFromTable}
             active={{
-              collateral:
-                pairIndex !== null
-                  ? pairs[pairIndex].collateralData.symbol
-                  : null,
-              synthetic:
-                pairIndex !== null
-                  ? pairs[pairIndex].syntheticData.symbol
-                  : null,
+              collateral: pairIndex !== null ? pairs[pairIndex].collateralData.symbol : null,
+              synthetic: pairIndex !== null ? pairs[pairIndex].syntheticData.symbol : null
             }}
             vaultType={pairIndex !== null ? pairs[pairIndex].vaultType : 0}
-            page={"vault"}
+            page={'vault'}
           />
         ) : null}
       </Grid>
@@ -198,9 +171,7 @@ export const WrappedBorrow: React.FC<IProp> = ({
             borrowed={pairs[pairIndex].syntheticData.symbol}
             limit={Number(
               printBN(
-                pairs[pairIndex].maxBorrow.val.sub(
-                  pairs[pairIndex].mintAmount.val
-                ),
+                pairs[pairIndex].maxBorrow.val.sub(pairs[pairIndex].mintAmount.val),
                 pairs[pairIndex].maxBorrow.scale
               )
             )}
@@ -219,7 +190,7 @@ export const WrappedBorrow: React.FC<IProp> = ({
             collateralAddress={pairs[pairIndex].collateral}
             borrowedAddress={pairs[pairIndex].synthetic}
             borrowedSign={pairs[pairIndex].syntheticData.symbol}
-            amountSign={"$"}
+            amountSign={'$'}
             callPrice={pairs[pairIndex].collateralData.price}
             borrPrice={pairs[pairIndex].syntheticData.price}
             interestRate={printBN(
@@ -227,38 +198,33 @@ export const WrappedBorrow: React.FC<IProp> = ({
               pairs[pairIndex].debtInterestRate.scale - 4
             )}
             openFee={
-              Number(
-                printBN(
-                  pairs[pairIndex].openFee.val,
-                  pairs[pairIndex].openFee.scale
-                )
-              ) * 100
+              Number(printBN(pairs[pairIndex].openFee.val, pairs[pairIndex].openFee.scale)) * 100
             }
             vaultType={pairs[pairIndex].vaultType}
-            page={"vault"}
+            page={'vault'}
           />
         ) : (
           <BorrowInfo
             collateralAmount={totalGeneralAmount.totalCollateralAmount.toString()}
             debtAmount={totalGeneralAmount.totalDebtAmount.toString()}
-            collateral={" "}
-            borrowed={" "}
+            collateral={' '}
+            borrowed={' '}
             cRatio={0}
             limit={0}
             liqRatio={{ val: new BN(0), scale: 0 }}
             collateralAddress={DEFAULT_PUBLICKEY}
             borrowedAddress={DEFAULT_PUBLICKEY}
-            borrowedSign={" "}
-            amountSign={"$"}
+            borrowedSign={' '}
+            amountSign={'$'}
             callPrice={{ val: new BN(0), scale: 0 }}
             borrPrice={{ val: new BN(0), scale: 0 }}
-            interestRate={"0"}
+            interestRate={'0'}
             openFee={0}
             vaultType={-1}
-            page={"vault"}
+            page={'vault'}
           />
         )}
       </Grid>
     </Grid>
-  );
-};
+  )
+}

@@ -10,7 +10,7 @@ import { BN } from "@project-serum/anchor";
 import React from "react";
 import { BorrowInfo } from "../BorrowInfo/BorrowInfo";
 import { BorrowTable } from "../BorrowTable/BorrowTable";
-import { ActionBorrow } from "../SwitchBorrow/ActionBorrow";
+import ActionBorrow from "../SwitchBorrow/ActionBorrow";
 import ActionMenuBorrow, {
   IActionContents,
 } from "../SwitchBorrow/ActionMenuBorrow";
