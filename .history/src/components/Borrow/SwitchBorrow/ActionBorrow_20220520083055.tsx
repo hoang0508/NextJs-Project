@@ -437,8 +437,8 @@ const ActionBorrow: React.FC<IProp> = ({
             <Grid className={classes.cRatioGrid}>
               <Grid className={classes.cRatioBack}>
                 <Typography className={classes.cRatioTitle}>
-                  {/* <Hidden xsDown>Collateral Ratio</Hidden>
-                  <Hidden smUp>C-Ratio</Hidden> */}
+                  <Hidden xsDown>Collateral Ratio</Hidden>
+                  <Hidden smUp>C-Ratio</Hidden>
                 </Typography>
                 <Divider />
                 <Button
